@@ -58,6 +58,7 @@ class CharList extends Component {
 			loading: false,
 		});
 	};
+
 	renderItems(arr) {
 		const items = arr.map((item) => {
 			let imgStyle = { objectFit: 'cover' };
@@ -68,11 +69,24 @@ class CharList extends Component {
 				imgStyle = { objectFit: 'unset' };
 			}
 
+			const classes =
+				this.props.selectedChar === item.id
+					? 'char__item char__item_selected'
+					: 'char__item';
+
 			return (
 				<li
-					className='char__item'
+					className={classes}
+					tabIndex={0}
 					key={item.id}
-					onClick={() => this.props.onCharSelected(item.id)}
+					onClick={() => {
+						this.props.onCharSelected(item.id);
+					}}
+					onKeyDown={(e) => {
+						if (e.key === ' ' || e.key === 'Enter') {
+							this.props.onCharSelected(item.id);
+						}
+					}}
 				>
 					<img src={item.thumbnail} alt={item.name} style={imgStyle} />
 					<div className='char__name'>{item.name}</div>
