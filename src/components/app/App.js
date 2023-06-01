@@ -8,7 +8,7 @@ const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const ComicsPage = lazy(() => import('../pages/ComicsPage'));
 const SingleComicsPage = lazy(() => import('../pages/SingleComicsPage'));
-// comment test
+
 const App = () => {
 	return (
 		<div className='app'>
